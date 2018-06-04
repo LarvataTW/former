@@ -455,10 +455,10 @@ class Group extends Tag
 		$block  = array_get($this->help, 'block');
 
 		// Replace help text with error if any found
-		$errors = $this->app['former']->getErrors();
-		if ($errors and $this->app['former']->getOption('error_messages')) {
-			$inline = $this->app['former.framework']->createHelp($errors);
-		}
+//		$errors = $this->app['former']->getErrors();
+//		if ($errors and $this->app['former']->getOption('error_messages')) {
+//			$inline = $this->app['former.framework']->createHelp($errors);
+//		}
 
 		return join(null, array($inline, $block));
 	}
