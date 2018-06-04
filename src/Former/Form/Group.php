@@ -48,6 +48,13 @@ class Group extends Tag
 	protected $help = array();
 
 	/**
+	 * The group error
+	 *
+	 * @var array
+	 */
+	protected $error = array();
+
+	/**
 	 * An array of elements to preprend the field
 	 *
 	 * @var array
@@ -176,6 +183,7 @@ class Group extends Tag
 		$label = $this->getLabel($field);
 		$field = $this->prependAppend($field);
 		$field .= $this->getHelp();
+		$field .= $this->getCustomError();
 
 		return $this->wrap($field, $label);
 	}
@@ -318,7 +326,7 @@ class Group extends Tag
 	public function inlineError($attributes = array())
 	{
 
-		$this->help['inline'] = $this->app['former.framework']->createHelp($attributes);
+		$this->error['inline'] = $this->app['former.framework']->createError($attributes);
 	}
 
 
@@ -454,6 +462,13 @@ class Group extends Tag
 
 		return join(null, array($inline, $block));
 	}
+
+	protected function getCustomError()
+	{
+		$inline = array_get($this->error, 'inline');
+
+		return join(null, array($inline));
+    }
 
 	/**
 	 * Format the field with prepended/appended elements
