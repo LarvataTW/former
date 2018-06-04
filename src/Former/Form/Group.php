@@ -182,8 +182,8 @@ class Group extends Tag
 	{
 		$label = $this->getLabel($field);
 		$field = $this->prependAppend($field);
-		$field .= $this->getHelp();
 		$field .= $this->getCustomError();
+		$field .= $this->getHelp();
 
 		return $this->wrap($field, $label);
 	}
@@ -323,10 +323,10 @@ class Group extends Tag
 	 *
 	 * @param  array  $attributes Facultative attributes
 	 */
-	public function inlineError($attributes = array())
+	public function inlineError($field, $errors)
 	{
 
-		$this->error['inline'] = $this->app['former.framework']->createError($attributes);
+		$this->error['inline'] = $this->app['former.framework']->createError($field, $errors);
 	}
 
 
